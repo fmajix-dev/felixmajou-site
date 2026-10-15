@@ -1,0 +1,39 @@
+---
+// Surtitre + titre + description, repris à l'identique dans toutes les sections.
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const { eyebrow, title, description, align = 'left', class: className } = Astro.props;
+const centered = align === 'center';
+---
+
+<div class:list={[centered ? 'mx-auto max-w-2xl text-center' : 'max-w-xl', className]}>
+  <span class="mb-3 block text-xs font-medium uppercase tracking-widest text-blue-600">
+    {eyebrow}
+  </span>
+  <h2
+    class:list={[
+      'text-2xl font-medium tracking-tight sm:text-3xl',
+      centered && 'mb-3',
+    ]}
+  >
+    {title}
+  </h2>
+  {
+    description && (
+      <p
+        class:list={[
+          'text-sm font-light leading-relaxed text-slate-500',
+          centered ? 'sm:text-base' : 'mt-3',
+        ]}
+      >
+        {description}
+      </p>
+    )
+  }
+</div>

@@ -1,0 +1,88 @@
+---
+import { Icon } from 'astro-icon/components';
+import SectionHeading from '../SectionHeading.astro';
+import ServiceCard from '../ServiceCard.astro';
+---
+
+<section id="services" class="scroll-mt-6 border-b border-slate-100 px-6 py-14 lg:px-16 lg:py-16">
+  <div class="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <SectionHeading
+      eyebrow="Formats d’intervention"
+      title="Comment j’interviens."
+      description="Un accompagnement opérationnel sur vos sujets financiers critiques."
+    />
+    <a
+      href="#consultation"
+      class="inline-flex shrink-0 items-center gap-1.5 text-sm text-blue-600 hover:text-blue-700"
+    >
+      Parlons de vos besoins
+      <Icon name="solar:arrow-right-linear" size={16} aria-hidden="true" />
+    </a>
+  </div>
+
+  <div class="grid gap-5 md:grid-cols-2">
+    <ServiceCard
+      icon="lucide:landmark"
+      tone="blue"
+      surface="muted"
+      title="Ingénierie du financement"
+      intro="Vous préparez une levée de fonds, vous cherchez du financement non-dilutif, ou vous avez besoin de structurer une dette complexe."
+      details={[
+        {
+          label: 'Ce que je fais',
+          text: 'Architecture et exécution des levées de fonds. Financements BPI, ADEME, CIR/CII. Dettes bancaires structurées (capex industriel, projets énergie). Optimisation du mix fonds propres / aides / dette.',
+        },
+        {
+          label: 'Résultat',
+          text: 'Un plan de financement solide, les bons interlocuteurs activés, et les fonds sécurisés dans les délais.',
+        },
+      ]}
+    />
+    <ServiceCard
+      icon="lucide:chart-no-axes-combined"
+      tone="indigo"
+      surface="plain"
+      title="Pilotage & visibilité financière"
+      intro="Vous avez besoin de visibilité sur votre cash et votre trajectoire, et personne ne pilote ça aujourd’hui."
+      details={[
+        {
+          label: 'Ce que je fais',
+          text: 'Business plan, pilotage de trésorerie et BFR, reporting financier, gouvernance. Le socle qui vous permet de prendre des décisions éclairées.',
+        },
+        {
+          label: 'Résultat',
+          text: 'Vous savez où vous en êtes, où vous allez, et ce qu’il faut ajuster — sans surprise en fin de mois.',
+        },
+      ]}
+    />
+    <ServiceCard
+      icon="lucide:handshake"
+      tone="emerald"
+      surface="plain"
+      title="Croissance externe & stratégie"
+      intro="Vous envisagez une acquisition, un rapprochement, ou une mise à l’échelle."
+      details={[
+        {
+          label: 'Ce que je fais',
+          text: 'Négociation et structuration d’opérations de M&A. Accompagnement de la mise à l’échelle : gouvernance, reporting, pilotage post-intégration.',
+        },
+        {
+          label: 'Résultat',
+          text: 'Une opération bien structurée, avec les risques identifiés et les conditions négociées dans votre intérêt.',
+        },
+      ]}
+    />
+    <ServiceCard
+      icon="lucide:calendar-days"
+      tone="slate"
+      surface="muted"
+      title="Cadre d’engagement"
+      intro="Un format adapté à la complexité de votre mission et au rythme de votre entreprise."
+      bullets={[
+        'Temps partiel ou intérim',
+        'Sur site ou à distance',
+        'Forfait au succès possible sur les opérations non récurrentes',
+      ]}
+    />
+  </div>
+</section>

@@ -1,0 +1,34 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<section
+  class="relative mx-6 mb-14 overflow-hidden rounded-xl bg-slate-900 px-6 py-10 sm:p-10 lg:mx-16 lg:mb-16 lg:p-12"
+>
+  <div
+    class="pointer-events-none absolute inset-0 opacity-15"
+    style="background-image: radial-gradient(#94a3b8 1px, transparent 1px); background-size: 24px 24px;"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="relative flex flex-col justify-between gap-7 md:flex-row md:items-center">
+    <div class="max-w-lg">
+      <h2 class="mb-3 text-2xl font-medium tracking-tight text-white sm:text-3xl">
+        Besoin d’y voir clair sur vos sujets financiers ?
+      </h2>
+      <p class="text-sm font-light leading-relaxed text-slate-400">
+        Réservez un créneau de 30 minutes. On pose le contexte, on identifie si je peux vous aider,
+        et comment.
+      </p>
+    </div>
+    <div class="shrink-0">
+      <a
+        href="#consultation"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm text-white shadow-lg shadow-blue-500/10 transition-colors hover:bg-blue-400 md:w-auto"
+      >
+        Prendre rendez-vous
+        <Icon name="solar:arrow-right-linear" size={17} aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>

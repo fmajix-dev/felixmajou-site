@@ -1,0 +1,47 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import StatCard from '../StatCard.astro';
+
+//   = espace insécable : le montant et "M€" ne sont jamais séparés par un retour à la ligne.
+const stats = [
+  {
+    value: '9 M€',
+    label: 'de fonds propres levés',
+    text: 'BP + pitch investisseur pour une PME industrielle innovante (CA 10 M€, 50 ETP).',
+  },
+  {
+    value: '6 M€',
+    label: 'de prêt bancaire syndiqué',
+    text: 'Structuré pour la même PME.',
+  },
+  {
+    value: '10 M€',
+    label: 'd’aides à l’innovation obtenues',
+    text: 'BPI, ADEME, programmes européens.',
+  },
+  {
+    value: '270 M€',
+    label: 'de financements structurés',
+    text: '12 SPV pour une filiale de services énergétiques d’un groupe français — efficacité énergétique, renouvelables, agriculture durable.',
+  },
+  {
+    value: '30 M€',
+    label: 'de budget piloté',
+    text: 'Programme d’innovation multipartenaires pour une PME industrielle (mission en cours).',
+    wide: true,
+  },
+];
+---
+
+<section id="realisations" class="scroll-mt-6 px-6 py-14 lg:px-16 lg:py-16">
+  <div class="grid gap-8 lg:grid-cols-3 lg:gap-16">
+    <SectionHeading
+      eyebrow="Réalisations"
+      title="Ce que j’ai fait."
+      description="Des financements structurés et des projets pilotés, de la PME industrielle aux projets énergétiques."
+    />
+    <div class="grid gap-4 sm:grid-cols-2 lg:col-span-2">
+      {stats.map((stat) => <StatCard {...stat} />)}
+    </div>
+  </div>
+</section>

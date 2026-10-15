@@ -1,0 +1,42 @@
+---
+import { Icon } from 'astro-icon/components';
+import ConsultationForm from '../ConsultationForm.astro';
+
+const highlights = ['Financer votre croissance', 'Piloter votre cash', 'Structurer votre finance'];
+---
+
+<section class="grid items-center gap-12 px-6 py-12 lg:grid-cols-2 lg:gap-16 lg:px-16 lg:py-20">
+  <div class="max-w-xl">
+    <h1
+      class="mb-6 text-[1.75rem] font-medium leading-[1.18] tracking-tight sm:text-[2.1rem] lg:text-[2.6rem]"
+    >
+      Structurer la finance de votre entreprise
+      <span class="text-slate-400">sans recruter un DAF à temps plein.</span>
+    </h1>
+
+    <p class="mb-7 max-w-lg text-base font-light leading-relaxed text-slate-500 sm:text-lg">
+      Startups deeptech, PME industrielles, entreprises cleantech — j’interviens comme copilote
+      financier opérationnel aux côtés du dirigeant. Levées de fonds, financement non-dilutif,
+      pilotage cash, structuration : je prends les sujets financiers critiques pour que vous
+      puissiez vous concentrer sur votre business.
+    </p>
+
+    <div class="mb-9 mt-6 flex flex-wrap gap-x-7 gap-y-3 text-base text-slate-600">
+      {
+        highlights.map((item) => (
+          <span class="flex items-center gap-1.5">
+            <Icon
+              name="solar:check-circle-linear"
+              size={20}
+              class="text-blue-500"
+              aria-hidden="true"
+            />
+            {item}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <ConsultationForm />
+</section>

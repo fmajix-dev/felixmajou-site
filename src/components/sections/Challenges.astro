@@ -1,0 +1,37 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+
+const situations = [
+  'On prépare une levée de fonds et je ne sais pas par où commencer côté financier.',
+  'J’ai besoin de structurer un financement BPI/ADEME mais c’est un labyrinthe.',
+  'Ma trésorerie me stresse, je manque de visibilité sur les 6 prochains mois.',
+  'On envisage une acquisition et j’ai besoin de quelqu’un pour structurer l’opération.',
+  'Mon expert-comptable fait le job comptable, mais personne ne pilote la stratégie financière.',
+  'J’ai besoin d’un bras droit financier, mais pas le budget ni le besoin d’un temps plein.',
+];
+---
+
+<section
+  id="enjeux"
+  class="overflow-hidden border-y border-slate-100 bg-slate-50 px-6 py-14 lg:px-16 lg:py-16"
+>
+  <SectionHeading
+    align="center"
+    eyebrow="Vos enjeux"
+    title="Quand faire appel à un DAF à temps partagé."
+    description="Vous vous reconnaissez dans l’une de ces situations ?"
+    class="mb-9"
+  />
+
+  <div class="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
+    {
+      situations.map((situation) => (
+        <div class="rounded-xl border border-slate-200 bg-white p-6">
+          <p class="text-sm font-light leading-relaxed text-slate-600">
+            «&nbsp;{situation}&nbsp;»
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>

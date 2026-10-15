@@ -1,0 +1,81 @@
+---
+import { Icon } from 'astro-icon/components';
+import { siteConfig } from '../config/site';
+---
+
+<header class="relative z-30 border-b border-slate-100 bg-white">
+  <nav
+    aria-label="Navigation principale"
+    class="flex items-center gap-6 px-6 py-5 lg:gap-10 lg:px-10"
+  >
+    <a href="/" class="shrink-0 text-base font-medium tracking-tight text-slate-900">
+      {siteConfig.name}
+    </a>
+
+    <div class="hidden items-center gap-7 text-sm text-slate-500 md:flex">
+      {
+        siteConfig.headerNav.map((item) => (
+          <a href={item.href} class="transition-colors hover:text-slate-900">
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="ml-auto flex items-center gap-3">
+      <button
+        id="menu-button"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 md:hidden"
+      >
+        <span id="menu-icon-open">
+          <Icon name="solar:hamburger-menu-linear" size={22} aria-hidden="true" />
+        </span>
+        <span id="menu-icon-close" class="hidden">
+          <Icon name="solar:close-circle-linear" size={22} aria-hidden="true" />
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden border-t border-slate-100 px-6 py-4 md:hidden">
+    <div class="flex flex-col gap-4 text-sm text-slate-600">
+      {siteConfig.headerNav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  if (menuButton && mobileMenu && iconOpen && iconClose) {
+    const setMenu = (isOpen: boolean) => {
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      iconOpen.classList.toggle('hidden', isOpen);
+      iconClose.classList.toggle('hidden', !isOpen);
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+    };
+
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
+  }
+</script>

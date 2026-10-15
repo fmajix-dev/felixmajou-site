@@ -1,0 +1,43 @@
+---
+import { siteConfig } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-slate-100 px-6 py-8 lg:px-16">
+  <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
+    <div>
+      <a href="/" class="mb-3 inline-flex items-center gap-2">
+        <span class="text-base font-medium tracking-tight">{siteConfig.name}</span>
+      </a>
+      <p class="max-w-xs text-xs leading-relaxed text-slate-500">{siteConfig.tagline}</p>
+    </div>
+    <nav
+      aria-label="Navigation de pied de page"
+      class="flex flex-wrap gap-x-6 gap-y-3 text-xs text-slate-500"
+    >
+      {
+        siteConfig.footerNav.map((item) => (
+          <a href={item.href} class="hover:text-blue-600">
+            {item.label}
+          </a>
+        ))
+      }
+      <a href={siteConfig.linkedin} class="hover:text-blue-600">LinkedIn</a>
+    </nav>
+  </div>
+  <div
+    class="mt-7 flex flex-col justify-between gap-3 border-t border-slate-100 pt-5 text-xs text-slate-400 sm:flex-row"
+  >
+    <p>
+      © <span id="year">{year}</span>
+      {siteConfig.name}. Tous droits réservés.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Garde l'année à jour même si le site n'a pas été redéployé depuis le 1er janvier.
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+</script>

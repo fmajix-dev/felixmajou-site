@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import '@fontsource/inter/latin-300.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = siteConfig.title, description = siteConfig.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f1f5f9" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+  </head>
+
+  <body
+    class="min-h-screen bg-slate-100 p-3 text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900 sm:p-6 lg:p-8"
+  >
+    <a
+      href="#main-content"
+      class="sr-only z-50 rounded-lg bg-white p-4 text-sm focus:not-sr-only focus:absolute focus:left-6 focus:top-6"
+    >
+      Aller au contenu
+    </a>
+
+    <div
+      class="relative mx-auto max-w-7xl overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-900/5"
+    >
+      <Header />
+      <main id="main-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

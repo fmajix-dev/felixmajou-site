@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import portrait from '../../assets/images/felix-majou-portrait.webp';
+
+const facts = [
+  {
+    label: 'Formation',
+    lines: ['PhD robotique (École Normale Supérieure)', 'CFA Charterholder'],
+  },
+  {
+    label: 'Langues',
+    lines: ['Français · Anglais (bilingue, 10+ ans UK/Suisse)'],
+  },
+  {
+    label: 'Zones d’intervention',
+    lines: ['Auvergne-Rhône-Alpes · Île-de-France', 'Sur site ou à distance'],
+  },
+];
+---
+
+<section
+  id="about"
+  class="scroll-mt-6 border-b border-slate-100 bg-slate-50 px-6 py-14 lg:px-16 lg:py-16"
+>
+  <div class="grid items-center gap-10 lg:grid-cols-5 lg:gap-16">
+    <div class="lg:col-span-3">
+      <span class="mb-3 block text-xs font-medium uppercase tracking-widest text-blue-600">
+        Félix Majou
+      </span>
+      <h2 class="mb-5 text-2xl font-medium tracking-tight sm:text-3xl">Mon parcours.</h2>
+      <p class="mb-4 text-sm font-light leading-relaxed text-slate-500">
+        J’ai commencé dans la finance structurée et l’investissement — 15 ans entre Londres, Genève
+        et Paris, dans le pétrole puis la transition énergétique. J’ai structuré des financements
+        de projets à grande échelle, accompagné des entreprises en phase de croissance, et appris
+        ce que signifie concrètement piloter des montants significatifs sous contrainte.
+      </p>
+      <p class="text-sm font-light leading-relaxed text-slate-500">
+        En 2026, j’ai lancé mon activité de DAF à temps partagé. Pas par lassitude du salariat,
+        mais par conviction : les startups deeptech et les PME industrielles innovantes ont besoin
+        d’une direction financière de haut niveau, et la plupart n’ont ni le budget ni le volume
+        pour un DAF à temps plein.
+      </p>
+      <p class="mt-4 text-sm font-light leading-relaxed text-slate-500">
+        Aujourd’hui j’interviens principalement en Auvergne-Rhône-Alpes et en Île-de-France, dans
+        les secteurs deeptech, industrie, cleantech, énergie et décarbonation.
+      </p>
+      <a
+        href="#consultation"
+        class="mt-6 inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700"
+      >
+        Échangeons sur vos enjeux
+        <Icon name="solar:arrow-right-linear" size={16} aria-hidden="true" />
+      </a>
+    </div>
+
+    <div class="space-y-6 lg:col-span-2">
+      <Image
+        src={portrait}
+        alt="Portrait de Félix Majou, DAF à temps partagé"
+        class="aspect-square w-full max-w-sm rounded-xl border border-slate-200 object-cover object-[50%_45%] shadow-xs lg:max-w-none"
+      />
+
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-xs sm:p-8">
+        <div class="space-y-6">
+          {
+            facts.map((fact, index) => (
+              <div class:list={[index > 0 && 'border-t border-slate-100 pt-6']}>
+                <h3 class="mb-2 text-sm font-medium">{fact.label}</h3>
+                <p class="text-sm font-light leading-relaxed text-slate-500">
+                  {fact.lines.map((line, i) => (
+                    <>
+                      {line}
+                      {i < fact.lines.length - 1 && <br />}
+                    </>
+                  ))}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

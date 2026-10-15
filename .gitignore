@@ -1,0 +1,25 @@
+# Dépendances et build
+node_modules/
+dist/
+.astro/
+
+# Variables d'environnement et secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cloudflare / outils locaux
+.wrangler/
+.dev.vars
+
+# Système et éditeurs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

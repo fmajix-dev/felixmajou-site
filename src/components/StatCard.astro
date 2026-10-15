@@ -1,0 +1,19 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  text: string;
+  /** Occupe toute la largeur de la grille à partir de sm */
+  wide?: boolean;
+}
+
+const { value, label, text, wide = false } = Astro.props;
+---
+
+<article
+  class:list={['rounded-xl border border-slate-200 bg-slate-50/60 p-6', wide && 'sm:col-span-2']}
+>
+  <p class="text-3xl font-medium tracking-tight text-blue-600">{value}</p>
+  <h3 class="mb-2 mt-3 text-sm font-medium">{label}</h3>
+  <p class="text-sm font-light leading-relaxed text-slate-500">{text}</p>
+</article>

@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Detail {
+  label: string;
+  text: string;
+}
+
+interface Props {
+  icon: string;
+  title: string;
+  intro: string;
+  /** Couleur de la pastille d'icône */
+  tone?: 'blue' | 'indigo' | 'emerald' | 'slate';
+  /** Fond de la carte : "muted" (gris très clair) ou "plain" (blanc) */
+  surface?: 'muted' | 'plain';
+  /** Blocs "libellé + texte" */
+  details?: Detail[];
+  /** Ou simple liste à puces courtes */
+  bullets?: string[];
+}
+
+const { icon, title, intro, tone = 'blue', surface = 'plain', details, bullets } = Astro.props;
+
+const tones = {
+  blue: 'border-blue-100 bg-blue-50 text-blue-600',
+  indigo: 'border-indigo-100 bg-indigo-50 text-indigo-600',
+  emerald: 'border-emerald-100 bg-emerald-50 text-emerald-600',
+  slate: 'border-slate-200 bg-slate-100 text-slate-600',
+};
+const surfaces = {
+  muted: 'bg-slate-50/60',
+  plain: 'bg-white',
+};
+---
+
+<article
+  class:list={[
+    'rounded-xl border border-slate-200/70 p-6 transition-colors hover:border-blue-200 sm:p-8',
+    surfaces[surface],
+  ]}
+>
+  <div
+    class:list={[
+      'mb-5 flex h-10 w-10 items-center justify-center rounded-lg border',
+      tones[tone],
+    ]}
+  >
+    <Icon name={icon} size={22} aria-hidden="true" />
+  </div>
+  <h3 class="mb-2 text-lg font-medium tracking-tight">{title}</h3>
+  <p class="mb-5 text-sm font-light leading-relaxed text-slate-500">{intro}</p>
+  <ul class="space-y-3 text-sm text-slate-600">
+    {
+      details?.map((detail) => (
+        <li>
+          <span class="font-medium text-slate-800">{detail.label}</span>
+          <p class="mt-2 font-light leading-relaxed">{detail.text}</p>
+        </li>
+      ))
+    }
+    {bullets?.map((bullet) => <li>{bullet}</li>)}
+  </ul>
+</article>
